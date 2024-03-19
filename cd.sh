@@ -11,7 +11,8 @@ cp *.elf CD_root/isolinux/
 cp *.jpg CD_root/isolinux/
 cp *.menu CD_root/isolinux/
 cp *.txt CD_root/isolinux/
-yasm --parser=TASM hello.asm -o hello.com
+rm hello.com
+fasm hello.asm hello.com
 cp *.c32 CD_root/isolinux/
 cp *.com CD_root/isolinux/
 genisoimage -o myos.iso -input-charset utf-8 -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4  -boot-info-table ./CD_root 
