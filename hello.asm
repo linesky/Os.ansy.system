@@ -205,7 +205,7 @@ clear:
         mov ecx,2160
         cs
         mov ah,[colorss]
-        mov ah,17h
+        
         mov al,20h
         clearss:
                 ds
@@ -451,7 +451,7 @@ dd 0
 yyyy:
 dd 0
 colorss:
-dd 17
+dd 12h
 msg10:
 db 27,"[00;00fhello world...",0
 msg11:
