@@ -451,7 +451,7 @@ dd 0
 yyyy:
 dd 0
 colorss:
-dd 12h
+dd 17h
 msg10:
 db 27,"[00;00fhello world...",0
 msg11:
