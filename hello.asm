@@ -1,13 +1,16 @@
         ORG   100h
 USE16
 call intF0set
+        mov al,17h
+        mov edx,3
+        int 0xf0
+        mov edx,1
+        int 0xf0
         mov ax,msg3
         mov edx,0
         int 0xf0
         mov ax,msg2
         mov edx,0
-        int 0xf0
-        mov edx,2
         int 0xf0
         mov ax,msg10
         mov edx,0
@@ -189,6 +192,7 @@ copyb8000:
         pop eax
         ret
 clear:
+
         push eax
         push ebx
         push ecx
@@ -453,7 +457,7 @@ dd 0
 colorss:
 dd 17h
 msg10:
-db 27,"[00;00fhello world...",0
+db 27,"[00;00fhello ...",0
 msg11:
 db 27,"[01;01fhello world...",0
 msg12:
