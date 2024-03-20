@@ -4,14 +4,14 @@ call intF0set
         mov al,17h
         mov edx,3
         int 0xf0
-        mov edx,1
-        int 0xf0
-        mov ax,msg3
-        mov edx,0
-        int 0xf0
+
         mov ax,msg2
         mov edx,0
         int 0xf0
+        mov al,17h
+        mov edx,3
+        int 0xf0
+
         mov ax,msg10
         mov edx,0
         int 0xf0
@@ -274,7 +274,7 @@ escapeCode:
                cmp al,'f'
                jz escapeCodessf
                cmp al,'m'
-               jz escapeCodessm
+               jz ress
                cmp al,';'
                jnz escapeCodessv
                inc dh
@@ -313,6 +313,8 @@ escapeCode:
                mov si,0
                escapeCodessdh1:
                jmp escapeCodessss
+               ress:
+               jmp escapeCodessm
                escapeCodessf:
                pop eax
                inc bx
@@ -343,7 +345,9 @@ escapeCode:
                or ax,si
                jmp escapeCodessmm2
                escapeCodessmm:
+               
                and si,7
+               
                or ax,si
                escapeCodessmm2:
                cmp di,9
@@ -351,13 +355,16 @@ escapeCode:
                sub di,10
                and di,7
                shl di,4
+
                or ax,di
                jmp escapeCodessmmm2
                escapeCodessmmm:
                and di,7
+
                or ax,di
                escapeCodessmmm2:
-               call setColor
+               cs
+               mov [colorss],al
                pop bx
                pop edi
                jmp escapeCodess
@@ -457,7 +464,7 @@ dd 0
 colorss:
 dd 17h
 msg10:
-db 27,"[00;00fhello ...",0
+db 27,"[00;00fhello world...",0
 msg11:
 db 27,"[01;01fhello world...",0
 msg12:
